@@ -44,8 +44,8 @@ class Profile extends Component {
           </Finance>
           <Content>
             <SeparatorTitle>Indicações</SeparatorTitle>
-            {indicators.map(indicator => (
-              <Indications indicator={indicator} />
+            {indicators.map((indicator, index) => (
+              <Indications key={index} indicator={indicator} />
             ))}
           </Content>
         </ContentAnimation>

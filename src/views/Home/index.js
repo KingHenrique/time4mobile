@@ -30,8 +30,8 @@ class Home extends Component {
             <Title>Seguros Atualizados</Title>
           </TitleContent>
           <Content>
-            {insures.map(insure => (
-              <InsurePlans insure={insure} />
+            {insures.map((insure, index) => (
+              <InsurePlans key={index} insure={insure} />
             ))}
           </Content>
         </ContentAnimation>

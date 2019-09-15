@@ -6,9 +6,9 @@ const Indications = ({ indicator }) => {
   return (
     <Container>
       <Date>{indicator.date}</Date>
-      {indicator.days_indicators.map(indication => {
+      {indicator.days_indicators.map((indication, index) => {
         return (
-          <Indication>
+          <Indication key={index}>
             <Title>{indication.title}</Title>
             <Value>R$ {indication.value}</Value>
           </Indication>
