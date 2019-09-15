@@ -77,6 +77,11 @@ class InsureOptions extends Component {
   }
 
   render() {
+    const { currentInsure } = this.props
+    let description =
+      currentInsure?.description.length > 200
+        ? currentInsure?.description.substring(0, 400 - 3) + '...'
+        : currentInsure?.description
     return (
       <Container style={{ top: this.state.top, opacity: this.state.opacity }}>
         <IconContainer onPress={this.closeModal}>
@@ -84,17 +89,25 @@ class InsureOptions extends Component {
         </IconContainer>
         <Content>
           <Company>
-            <Logo source={require('../../assets/mongeral.jpeg')} />
-            <CompanyInformation>
-              <Title>Mongeral Aegon</Title>
-              <Subtitle>Seguros e previência</Subtitle>
-            </CompanyInformation>
+            {currentInsure.id == 1 ? (
+              <>
+                <Logo source={require('../../assets/mongeral.jpeg')} />
+                <CompanyInformation>
+                  <Title>Mongeral Aegon</Title>
+                  <Subtitle>Cotação seguro viagem</Subtitle>
+                </CompanyInformation>
+              </>
+            ) : (
+              <>
+                <Logo source={require('../../assets/travelace.jpeg')} />
+                <CompanyInformation>
+                  <Title>Travel Ace</Title>
+                  <Subtitle>Cotação Seguro viagem</Subtitle>
+                </CompanyInformation>
+              </>
+            )}
           </Company>
-          <TextInfo>
-            {
-              'A Mongeral Aegon é a primeira iniciativa de previdência do país e acredita que todos devem ter a oportunidade de planejar um futuro cada vez mais longo com tranquilidade e segurança.\n\nNossos quase 200 anos de atuação ininterrupta no Brasil acumularam conhecimento para acompanhar as mudanças dos anseios de consumo e planejamento financeiro das pessoas.\n\nCom soluções completas e flexíveis de seguros de vida e previdência, buscamos atender às necessidades de segurança financeira de nossos clientes e estar ao seu lado durante toda a vida como uma referência de confiança e solidez.\n'
-            }
-          </TextInfo>
+          <TextInfo>{description}</TextInfo>
         </Content>
         <Button onPress={this.share}>
           <ButtonContainer>
@@ -107,13 +120,18 @@ class InsureOptions extends Component {
   }
 }
 
-InsureOptions.defaultProps = {}
+InsureOptions.defaultProps = {
+  currentInsure: {
+    description: ''
+  }
+}
 
 InsureOptions.propTypes = {}
 
 const mapStateToProps = state => {
   return {
-    showModal: state.Animation.showModal
+    showModal: state.Animation.showModal,
+    currentInsure: state.Insure.currentInsure
   }
 }
 

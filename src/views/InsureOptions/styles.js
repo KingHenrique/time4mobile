@@ -73,6 +73,7 @@ export const TextInfo = styled.Text`
   font-size: 14px;
   padding: 15px;
   color: ${colors.dark};
+  text-align: left;
 `
 export const ButtonContainer = styled.View`
   flex-direction: row;

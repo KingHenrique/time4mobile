@@ -14,7 +14,6 @@ import { actions } from '../../redux/actions'
 import { Animated, Dimensions, Easing, View } from 'react-native'
 import PropTypes from 'prop-types'
 import { NavigationEvents } from 'react-navigation'
-import { Actions } from '../../redux/reducers/Insure'
 const { width, height } = Dimensions.get('window')
 
 class Home extends Component {
@@ -32,8 +31,11 @@ class Home extends Component {
     }
   }
 
-  selectInsure = index => {
-    this.props.toggleModalAction()
+  selectInsure = async index => {
+    let resp = await this.props.getInformations(index % 2 == 0 ? 1 : 2)
+    console.log({ resp })
+
+    resp.status == 200 ? this.props.toggleModalAction() : null
   }
 
   componentDidMount = () => {
