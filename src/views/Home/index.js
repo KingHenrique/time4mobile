@@ -11,8 +11,9 @@ import {
 import { InsurePlans } from '../../components'
 import { InsureOptions } from '../../views'
 import { actions } from '../../redux/actions'
-import { Animated, Dimensions, Easing } from 'react-native'
+import { Animated, Dimensions, Easing, View } from 'react-native'
 import PropTypes from 'prop-types'
+import { NavigationEvents } from 'react-navigation'
 const { width, height } = Dimensions.get('window')
 
 class Home extends Component {
@@ -24,6 +25,7 @@ class Home extends Component {
     super(props)
     this.state = {
       username: '',
+      display: false,
       opacity: new Animated.Value(1),
       scale: new Animated.Value(1)
     }
@@ -62,43 +64,54 @@ class Home extends Component {
         toValue: 1
       }).start()
     }
-    // if (this.props.showModal == false) {
-    //   Animated.spring(this.state.top, {
-    //     toValue: height
-    //   }).start()
-    // }
   }
+
+  animated = () => {
+    this.setState({ display: true })
+  }
+
+  remove = () => {
+    this.setState({ display: false })
+  }
+
+  renderView = () => (
+    <Container>
+      <ContainerAnimation
+        style={{
+          transform: [
+            {
+              scale: this.state.scale
+            }
+          ],
+          opacity: this.state.opacity
+        }}>
+        <ContentAnimation>
+          <TitleContent>
+            <Title>Seguros Atualizados</Title>
+          </TitleContent>
+          <Content>
+            {insures.map((insure, index) => (
+              <InsurePlans
+                press={this.selectInsure}
+                key={index}
+                index={index}
+                insure={insure}
+              />
+            ))}
+          </Content>
+        </ContentAnimation>
+      </ContainerAnimation>
+      <InsureOptions />
+    </Container>
+  )
 
   render() {
     return (
-      <Container>
-        <ContainerAnimation
-          style={{
-            transform: [
-              {
-                scale: this.state.scale
-              }
-            ],
-            opacity: this.state.opacity
-          }}>
-          <ContentAnimation>
-            <TitleContent>
-              <Title>Seguros Atualizados</Title>
-            </TitleContent>
-            <Content>
-              {insures.map((insure, index) => (
-                <InsurePlans
-                  press={this.selectInsure}
-                  key={index}
-                  index={index}
-                  insure={insure}
-                />
-              ))}
-            </Content>
-          </ContentAnimation>
-        </ContainerAnimation>
-        <InsureOptions />
-      </Container>
+      <>
+        <NavigationEvents onDidFocus={() => this.animated()} />
+        <NavigationEvents onDidBlur={() => this.remove()} />
+        {this.state.display ? this.renderView() : <View></View>}
+      </>
     )
   }
 }
@@ -119,6 +132,22 @@ export default connect(
 )(Home)
 
 const insures = [
+  {
+    title: 'Mongeral',
+    type: 'Seguro de vida'
+  },
+  {
+    title: 'Travel Ace',
+    type: 'Seguro para viagens'
+  },
+  {
+    title: 'Mongeral',
+    type: 'Seguro de vida'
+  },
+  {
+    title: 'Travel Ace',
+    type: 'Seguro para viagens'
+  },
   {
     title: 'Mongeral',
     type: 'Seguro de vida'
