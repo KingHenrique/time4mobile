@@ -1,14 +1,22 @@
 import styled from 'styled-components/native'
 import { colors } from '../../styles'
+import { getStatusBarHeight } from 'react-native-iphone-x-helper'
+import { View } from 'react-native-animatable'
 
-export const Container = styled.View`
+export const Container = styled.ScrollView`
   flex: 1;
-  align-items: center;
-  justify-content: center;
 `
-export const TextView = styled.Text`
+export const ContentAnimation = styled(View).attrs({
+  animation: 'fadeInUp'
+})``
+export const TitleContent = styled.View`
+  margin-top: ${getStatusBarHeight() + 30}px;
+  padding: 0 20px;
+  width: 200px;
+`
+export const Title = styled.Text`
   font-family: avenir;
-  font-size: 18px;
-  color: #fff;
   font-weight: bold;
+  font-size: 28px;
+  color: ${colors.dark};
 `

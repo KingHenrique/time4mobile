@@ -17,6 +17,7 @@ import {
   Content
 } from './styles'
 import PropTypes from 'prop-types'
+import { Indications } from '../../components'
 
 class Profile extends Component {
   constructor(props) {
@@ -43,6 +44,9 @@ class Profile extends Component {
           </Finance>
           <Content>
             <SeparatorTitle>Indicações</SeparatorTitle>
+            {indicators.map(indicator => (
+              <Indications indicator={indicator} />
+            ))}
           </Content>
         </ContentAnimation>
       </Container>
@@ -61,3 +65,28 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps)(Profile)
+
+const indicators = [
+  {
+    date: 'JUNE 27, 2019',
+    days_indicators: [
+      {
+        title: 'Vida - Mongeral',
+        value: '17.71'
+      },
+      {
+        title: 'Viagem - Travel Ace',
+        value: '30.00'
+      }
+    ]
+  },
+  {
+    date: 'JUNE 26, 2019',
+    days_indicators: [
+      {
+        title: 'Viagem - Travel Ace',
+        value: '28.90'
+      }
+    ]
+  }
+]
