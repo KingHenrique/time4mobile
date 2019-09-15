@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text } from 'react-native'
 import { connect } from 'react-redux'
-import { Container, Image } from './styles'
+import { Container } from './styles'
 import PropTypes from 'prop-types'
 
 class Home extends Component {
@@ -17,11 +17,7 @@ class Home extends Component {
   }
 
   render() {
-    return (
-      <Container>
-        <Image />
-      </Container>
-    )
+    return <Container></Container>
   }
 }
 

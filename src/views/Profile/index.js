@@ -1,39 +1,44 @@
 import React, { Component } from 'react'
-import { View, Text } from 'react-native'
 import { actions } from '../../redux/actions'
 import { connect } from 'react-redux'
-import { Container, TextView} from './styles'
+import {
+  Container,
+  Personal,
+  Avatar,
+  PersonalInfo,
+  Message,
+  Name
+} from './styles'
 import PropTypes from 'prop-types'
 
 class Profile extends Component {
-
-  constructor(props){
+  constructor(props) {
     super(props)
-    this.state = {
-
-    }
+    this.state = {}
   }
 
-  render(){
-    return(
+  render() {
+    return (
       <Container>
-        <TextView>Profile</TextView>
+        <Personal>
+          <Avatar source={require('../../assets/avatar.jpg')} />
+          <PersonalInfo>
+            <Message>Bem vindo</Message>
+            <Name>Vanesso Pudinic</Name>
+          </PersonalInfo>
+        </Personal>
       </Container>
     )
   }
 }
 
-Profile.defaultProps = {
+Profile.defaultProps = {}
 
-}
-
-Profile.propTypes = {
-
-}
+Profile.propTypes = {}
 
 const mapStateToProps = state => {
   return {
-    initial:[]
+    initial: []
   }
 }
 
