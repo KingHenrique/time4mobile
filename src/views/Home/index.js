@@ -1,6 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Container, ContentAnimation, Title, TitleContent } from './styles'
+import {
+  Container,
+  ContentAnimation,
+  Title,
+  TitleContent,
+  Content
+} from './styles'
+import { InsurePlans } from '../../components'
 import PropTypes from 'prop-types'
 
 class Home extends Component {
@@ -22,6 +29,11 @@ class Home extends Component {
           <TitleContent>
             <Title>Seguros Atualizados</Title>
           </TitleContent>
+          <Content>
+            {insures.map(insure => (
+              <InsurePlans insure={insure} />
+            ))}
+          </Content>
         </ContentAnimation>
       </Container>
     )
@@ -39,3 +51,14 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps)(Home)
+
+const insures = [
+  {
+    title: 'Mongeral',
+    type: 'Seguro de vida'
+  },
+  {
+    title: 'Travel Ace',
+    type: 'Seguro para viagens'
+  }
+]

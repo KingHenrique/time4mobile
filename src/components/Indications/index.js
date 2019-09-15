@@ -10,7 +10,7 @@ const Indications = ({ indicator }) => {
         return (
           <Indication>
             <Title>{indication.title}</Title>
-            <Value>{indication.value}</Value>
+            <Value>R$ {indication.value}</Value>
           </Indication>
         )
       })}

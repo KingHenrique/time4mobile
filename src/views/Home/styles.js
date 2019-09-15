@@ -20,3 +20,6 @@ export const Title = styled.Text`
   font-size: 28px;
   color: ${colors.dark};
 `
+export const Content = styled.View`
+  padding: 20px 20px;
+`

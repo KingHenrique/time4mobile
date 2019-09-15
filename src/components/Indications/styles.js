@@ -19,7 +19,7 @@ export const Indication = styled.View`
   align-items: center;
   flex-direction: row;
   height: 60px;
-  border-bottom-width: ${StyleSheet.hairlineWidth}px;
+  border-bottom-width: 1px;
   border-color: ${colors.ice};
 `
 export const Title = styled.Text`

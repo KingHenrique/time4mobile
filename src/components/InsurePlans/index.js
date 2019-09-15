@@ -1,22 +1,19 @@
 import React from 'react'
 import { View, Text } from 'react-native'
-import { Container, TextView} from './styles'
+import { Container, Company, Type } from './styles'
 import PropTypes from 'prop-types'
 
-const InsurePlans = props => {
+const InsurePlans = ({ insure }) => {
   return (
     <Container>
-      <TextView>InsurePlans</TextView>
+      <Company>{insure.title}</Company>
+      <Type>{insure.type}</Type>
     </Container>
-  );
-};
-
-InsurePlans.defaultProps = {
-
+  )
 }
 
-InsurePlans.propTypes = {
+InsurePlans.defaultProps = {}
 
-}
+InsurePlans.propTypes = {}
 
 export default InsurePlans
