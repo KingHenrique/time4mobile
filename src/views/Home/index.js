@@ -47,7 +47,7 @@ class Home extends Component {
     if (this.props.showModal) {
       Animated.timing(this.state.scale, {
         toValue: 0.5,
-        duration: 300,
+        duration: 400,
         easing: Easing.in()
       }).start()
       Animated.spring(this.state.opacity, {
@@ -57,7 +57,7 @@ class Home extends Component {
     if (this.props.showModal == false) {
       Animated.timing(this.state.scale, {
         toValue: 1,
-        duration: 300,
+        duration: 400,
         easing: Easing.in()
       }).start()
       Animated.spring(this.state.opacity, {

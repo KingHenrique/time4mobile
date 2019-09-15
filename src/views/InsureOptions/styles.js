@@ -74,11 +74,12 @@ export const TextInfo = styled.Text`
   padding: 15px;
   color: ${colors.dark};
 `
-export const ButtonContainer = styled.TouchableOpacity`
+export const ButtonContainer = styled.View`
   flex-direction: row;
   align-items: center;
+  justify-content: center;
 `
-export const Button = styled.View`
+export const Button = styled.TouchableOpacity`
   margin-top: 20px;
   height: 60px;
   background: ${colors.blue}
@@ -92,6 +93,7 @@ export const ButtonText = styled.Text`
   font-weight: bold;
   color: white;
   color: ${colors.ice};
+  margin-left: 8px;
 `
 export const Square = styled.View`
   background: red;

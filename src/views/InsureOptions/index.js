@@ -29,7 +29,8 @@ class InsureOptions extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      top: new Animated.Value(height)
+      top: new Animated.Value(height),
+      opacity: new Animated.Value(0)
     }
   }
 
@@ -58,11 +59,17 @@ class InsureOptions extends Component {
 
   toggleMenu = () => {
     if (this.props.showModal) {
+      Animated.spring(this.state.opacity, {
+        toValue: 1
+      }).start()
       Animated.spring(this.state.top, {
         toValue: 100
       }).start()
     }
     if (this.props.showModal == false) {
+      Animated.spring(this.state.opacity, {
+        toValue: 0
+      }).start()
       Animated.spring(this.state.top, {
         toValue: height
       }).start()
@@ -71,7 +78,7 @@ class InsureOptions extends Component {
 
   render() {
     return (
-      <Container style={{ top: this.state.top }}>
+      <Container style={{ top: this.state.top, opacity: this.state.opacity }}>
         <IconContainer onPress={this.closeModal}>
           <Icon name={'ios-close'} size={44} />
         </IconContainer>
@@ -89,9 +96,9 @@ class InsureOptions extends Component {
             }
           </TextInfo>
         </Content>
-        <Button>
+        <Button onPress={this.share}>
           <ButtonContainer>
-            <IconShare name={'ios-share-alt'} />
+            <IconShare name={'ios-share-alt'} style={{ marginRight: 8 }} />
             <ButtonText>indicar</ButtonText>
           </ButtonContainer>
         </Button>
