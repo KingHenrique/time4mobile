@@ -35,7 +35,7 @@ const AppNavigator = createBottomTabNavigator(
       activeTintColor: colors.blue,
       inactiveTintColor: colors.dark,
       style: {
-        paddingTop: 10,
+        paddingTop: 8,
         height: 60
       },
       labelStyle: {
