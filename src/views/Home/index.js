@@ -14,6 +14,7 @@ import { actions } from '../../redux/actions'
 import { Animated, Dimensions, Easing, View } from 'react-native'
 import PropTypes from 'prop-types'
 import { NavigationEvents } from 'react-navigation'
+import { Actions } from '../../redux/reducers/Insure'
 const { width, height } = Dimensions.get('window')
 
 class Home extends Component {
@@ -68,6 +69,7 @@ class Home extends Component {
 
   animated = () => {
     this.setState({ display: true })
+    this.props.getInsures()
   }
 
   remove = () => {
@@ -108,6 +110,7 @@ class Home extends Component {
   render() {
     return (
       <>
+        {console.log('this.', this.props)}
         <NavigationEvents onDidFocus={() => this.animated()} />
         <NavigationEvents onDidBlur={() => this.remove()} />
         {this.state.display ? this.renderView() : <View></View>}
@@ -122,13 +125,14 @@ Home.propTypes = {}
 
 const mapStateToProps = state => {
   return {
-    showModal: state.Animation.showModal
+    showModal: state.Animation.showModal,
+    insures: state.Insure.insures
   }
 }
 
 export default connect(
   mapStateToProps,
-  { ...actions.Animation }
+  { ...actions.Animation, ...actions.Insure }
 )(Home)
 
 const insures = [
