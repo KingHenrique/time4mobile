@@ -5,10 +5,15 @@ import {
   ContentAnimation,
   Title,
   TitleContent,
-  Content
+  Content,
+  ContainerAnimation
 } from './styles'
 import { InsurePlans } from '../../components'
+import { InsureOptions } from '../../views'
+import { actions } from '../../redux/actions'
+import { Animated, Dimensions, Easing } from 'react-native'
 import PropTypes from 'prop-types'
+const { width, height } = Dimensions.get('window')
 
 class Home extends Component {
   static navigationOptions = {
@@ -18,23 +23,81 @@ class Home extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      username: ''
+      username: '',
+      opacity: new Animated.Value(1),
+      scale: new Animated.Value(1)
     }
+  }
+
+  selectInsure = index => {
+    this.props.toggleModalAction()
+  }
+
+  componentDidMount = () => {
+    this.toggleMenu()
+  }
+
+  componentDidUpdate = () => {
+    this.toggleMenu()
+  }
+
+  toggleMenu = () => {
+    if (this.props.showModal) {
+      Animated.timing(this.state.scale, {
+        toValue: 0.5,
+        duration: 300,
+        easing: Easing.in()
+      }).start()
+      Animated.spring(this.state.opacity, {
+        toValue: 0.5
+      }).start()
+    }
+    if (this.props.showModal == false) {
+      Animated.timing(this.state.scale, {
+        toValue: 1,
+        duration: 300,
+        easing: Easing.in()
+      }).start()
+      Animated.spring(this.state.opacity, {
+        toValue: 1
+      }).start()
+    }
+    // if (this.props.showModal == false) {
+    //   Animated.spring(this.state.top, {
+    //     toValue: height
+    //   }).start()
+    // }
   }
 
   render() {
     return (
       <Container>
-        <ContentAnimation>
-          <TitleContent>
-            <Title>Seguros Atualizados</Title>
-          </TitleContent>
-          <Content>
-            {insures.map((insure, index) => (
-              <InsurePlans key={index} insure={insure} />
-            ))}
-          </Content>
-        </ContentAnimation>
+        <ContainerAnimation
+          style={{
+            transform: [
+              {
+                scale: this.state.scale
+              }
+            ],
+            opacity: this.state.opacity
+          }}>
+          <ContentAnimation>
+            <TitleContent>
+              <Title>Seguros Atualizados</Title>
+            </TitleContent>
+            <Content>
+              {insures.map((insure, index) => (
+                <InsurePlans
+                  press={this.selectInsure}
+                  key={index}
+                  index={index}
+                  insure={insure}
+                />
+              ))}
+            </Content>
+          </ContentAnimation>
+        </ContainerAnimation>
+        <InsureOptions />
       </Container>
     )
   }
@@ -46,11 +109,14 @@ Home.propTypes = {}
 
 const mapStateToProps = state => {
   return {
-    initial: []
+    showModal: state.Animation.showModal
   }
 }
 
-export default connect(mapStateToProps)(Home)
+export default connect(
+  mapStateToProps,
+  { ...actions.Animation }
+)(Home)
 
 const insures = [
   {

@@ -12,15 +12,14 @@ export const Actions = {
   }
 }
 
-
 const INITIAL_STATE = {
-  showModal: false;
+  showModal: false
 }
 
 export default function Animation(state = INITIAL_STATE, action) {
   switch (action.type) {
     case Types.TOGGLE_MODAL:
-      return { ...state, showModal: !state.showModal } 
+      return { ...state, showModal: !state.showModal }
     default:
       return state
       break
