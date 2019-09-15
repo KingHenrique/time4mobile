@@ -49,7 +49,7 @@ class Home extends Component {
   toggleMenu = () => {
     if (this.props.showModal) {
       Animated.timing(this.state.scale, {
-        toValue: 0.5,
+        toValue: 0.8,
         duration: 400,
         easing: Easing.in()
       }).start()
@@ -91,7 +91,7 @@ class Home extends Component {
         }}>
         <ContentAnimation>
           <TitleContent>
-            <Title>Seguros Atualizados</Title>
+            <Title>Serviços de parceiras</Title>
           </TitleContent>
           <Content>
             {insures.map((insure, index) => (

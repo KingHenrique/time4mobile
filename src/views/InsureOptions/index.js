@@ -35,9 +35,14 @@ class InsureOptions extends Component {
   }
 
   share = () => {
+    const { currentInsure } = this.props
+    let type = currentInsure.id == 1 ? 'life' : 'trip'
+    let url = `http://10.212.2.24:3000/ConectionInsurer/insurer/${type}/indicator/vanessoPudinic`
     let shareOptions = {
+      message:
+        'Acho que isso combina com o você, e o melhor, com desconto, entre: \n\n',
       title: 'From Indicator',
-      url: `https://www.facebook.com/renan.henrique.771`,
+      url: url,
       subject: 'Share Link for indicator'
     }
     Share.open(shareOptions)
