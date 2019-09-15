@@ -29,8 +29,8 @@ const AppNavigator = createBottomTabNavigator(
         // tabBarOnPress: tabBarOnPress(navigation)
       }
     },
-    resetOnBlur: true,
     tabBarOptions: {
+      resetOnBlur: true,
       pressOpacity: 0.6,
       activeTintColor: colors.blue,
       inactiveTintColor: colors.dark,
