@@ -10,8 +10,8 @@ export const Container = styled(Animated.View)`
   height: ${height}px;
   width: 100%;
   border-radius: 20px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
-  z-index: 5;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
 `
 export const ContentOne = styled.View`
   flex: 1;
@@ -25,30 +25,52 @@ export const IconContainer = styled.TouchableOpacity`
   position: absolute;
   border-radius: 22;
   top: 10px;
-  left: 50%;
-  margin-left: -22px;
+  right: 10px;
   height: 44px;
   width: 44px;
   justify-content: center;
   align-items: center;
-  background: ${colors.blue};
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+  background: #fff;
 `
 export const Icon = styled(ICON).attrs({
   size: 44,
-  color: 'white'
+  color: colors.blue
 })``
 export const IconShare = styled(ICON).attrs({
-  size: 36,
-  color: 'white'
+  size: 28,
+  color: colors.ice
 })``
-export const Content = styled.View`
-  margin-top: 100px;
+export const Company = styled.View`
+  height: 80px;
+  flex-direction: row;
+  padding: 0 20px;
   border-bottom-width: 1px;
   border-color: ${colors.ice};
 `
+export const Logo = styled.Image`
+  height: 60px;
+  width: 60px;
+  background: yellow;
+`
+export const CompanyInformation = styled.View``
+export const Title = styled.Text`
+  font-family: avenir;
+  font-weight: bold;
+  font-size: 24px;
+  margin-left: 20px;
+  color: ${colors.dark};
+`
+export const Subtitle = styled.Text`
+  font-family: avenir;
+  font-size: 14px;
+  color: ${colors.blue}
+  margin-left: 20px;
+`
+export const Content = styled.View`
+  margin-top: 100px;
+`
 export const TextInfo = styled.Text`
-  font-size: 16px;
+  font-size: 14px;
   padding: 15px;
   color: ${colors.dark};
 `
@@ -57,16 +79,18 @@ export const ButtonContainer = styled.TouchableOpacity`
   align-items: center;
 `
 export const Button = styled.View`
-  height: 180px;
+  margin-top: 20px;
+  height: 60px;
+  background: ${colors.blue}
   justify-content: center;
   align-items: center;
+  margin: 0 60px;
 `
 export const ButtonText = styled.Text`
   font-size: 18px;
   font-weight: bold;
   color: white;
-  color: ${colors.dark}
-  margin-left: 8;
+  color: ${colors.ice};
 `
 export const Square = styled.View`
   background: red;

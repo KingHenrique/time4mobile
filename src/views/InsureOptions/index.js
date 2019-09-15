@@ -14,7 +14,12 @@ import {
   TextInfo,
   ButtonContainer,
   ButtonText,
-  Button
+  Button,
+  Company,
+  Logo,
+  CompanyInformation,
+  Title,
+  Subtitle
 } from './styles'
 import PropTypes from 'prop-types'
 import Share from 'react-native-share'
@@ -71,34 +76,22 @@ class InsureOptions extends Component {
           <Icon name={'ios-close'} size={44} />
         </IconContainer>
         <Content>
-          <Text
-            style={{
-              fontFamily: 'avenir',
-              fontWeight: 'bold',
-              fontSize: 26,
-              marginLeft: 20
-            }}>
-            Informações
-          </Text>
+          <Company>
+            <Logo source={require('../../assets/mongeral.jpeg')} />
+            <CompanyInformation>
+              <Title>Mongeral Aegon</Title>
+              <Subtitle>Seguros e previência</Subtitle>
+            </CompanyInformation>
+          </Company>
           <TextInfo>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised in the 1960s
-            with the release of Letraset sheets containing Lorem Ipsum passages,
-            and more recently with desktop publishing software like Aldus
-            PageMaker including versions of Lorem Ipsum.
+            {
+              'A Mongeral Aegon é a primeira iniciativa de previdência do país e acredita que todos devem ter a oportunidade de planejar um futuro cada vez mais longo com tranquilidade e segurança.\n\nNossos quase 200 anos de atuação ininterrupta no Brasil acumularam conhecimento para acompanhar as mudanças dos anseios de consumo e planejamento financeiro das pessoas.\n\nCom soluções completas e flexíveis de seguros de vida e previdência, buscamos atender às necessidades de segurança financeira de nossos clientes e estar ao seu lado durante toda a vida como uma referência de confiança e solidez.\n'
+            }
           </TextInfo>
         </Content>
         <Button>
-          <ButtonContainer onPress={this.share}>
-            <IconShare
-              color={'#454851'}
-              name={'ios-share-alt'}
-              style={{ marginright: 8 }}
-            />
+          <ButtonContainer>
+            <IconShare name={'ios-share-alt'} />
             <ButtonText>indicar</ButtonText>
           </ButtonContainer>
         </Button>
