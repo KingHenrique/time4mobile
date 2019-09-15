@@ -44,7 +44,8 @@ export const IconShare = styled(ICON).attrs({
 })``
 export const Content = styled.View`
   margin-top: 100px;
-  justify-content: space-around;
+  border-bottom-width: 1px;
+  border-color: ${colors.ice};
 `
 export const TextInfo = styled.Text`
   font-size: 16px;

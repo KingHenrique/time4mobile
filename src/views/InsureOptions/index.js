@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Animated, Dimensions } from 'react-native'
+import { Animated, Dimensions, Text } from 'react-native'
 import { actions } from '../../redux/actions'
 import { connect } from 'react-redux'
 import {
@@ -17,6 +17,7 @@ import {
   Button
 } from './styles'
 import PropTypes from 'prop-types'
+import Share from 'react-native-share'
 const { width, height } = Dimensions.get('window')
 
 class InsureOptions extends Component {
@@ -25,6 +26,17 @@ class InsureOptions extends Component {
     this.state = {
       top: new Animated.Value(height)
     }
+  }
+
+  share = () => {
+    let shareOptions = {
+      title: 'From Indicator',
+      url: `https://www.facebook.com/renan.henrique.771`,
+      subject: 'Share Link for indicator'
+    }
+    Share.open(shareOptions)
+      .then(r => console.log('share is ok'))
+      .catch(err => console.log(err))
   }
 
   componentDidMount = () => {
@@ -59,6 +71,15 @@ class InsureOptions extends Component {
           <Icon name={'ios-close'} size={44} />
         </IconContainer>
         <Content>
+          <Text
+            style={{
+              fontFamily: 'avenir',
+              fontWeight: 'bold',
+              fontSize: 26,
+              marginLeft: 20
+            }}>
+            Informações
+          </Text>
           <TextInfo>
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
@@ -72,7 +93,7 @@ class InsureOptions extends Component {
           </TextInfo>
         </Content>
         <Button>
-          <ButtonContainer>
+          <ButtonContainer onPress={this.share}>
             <IconShare
               color={'#454851'}
               name={'ios-share-alt'}
