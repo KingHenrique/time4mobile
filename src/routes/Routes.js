@@ -1,12 +1,11 @@
 import React from 'react'
 import * as views from '../views'
-import { createStackNavigator } from 'react-navigation-stack'
+import { createBottomTabNavigator } from 'react-navigation-tabs'
 import { createAppContainer } from 'react-navigation'
 
-const AppNavigator = createStackNavigator({
-  Home: { screen: views.Home }
-  Profile: { screen: views.Profile },
-  InsureOptions: { screen: views.InsureOptions },
+const AppNavigator = createBottomTabNavigator({
+  Home: { screen: views.Home },
+  Profile: { screen: views.Profile }
   // Insert views here
 })
 
