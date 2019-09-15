@@ -14,7 +14,7 @@ export const ContentAnimation = styled(View).attrs({
   animation: 'fadeInUp'
 })``
 export const TitleContent = styled.View`
-  margin-top: ${getStatusBarHeight() + 30}px;
+  margin-top: ${getStatusBarHeight() + 40}px;
   padding: 0 20px;
   width: 200px;
 `

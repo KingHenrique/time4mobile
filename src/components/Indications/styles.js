@@ -32,5 +32,5 @@ export const Value = styled.Text`
   font-family: avenir;
   font-weight: bold;
   font-size: 18px;
-  color: ${colors.dark};
+  color: ${colors.blue};
 `

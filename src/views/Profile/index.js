@@ -14,7 +14,11 @@ import {
   FinanceValue,
   FinanceValueRight,
   SeparatorTitle,
-  Content
+  Content,
+  Logout,
+  LogoutText,
+  Withdraw,
+  WithdrawText
 } from './styles'
 import PropTypes from 'prop-types'
 import { Indications } from '../../components'
@@ -41,13 +45,19 @@ class Profile extends Component {
             <FinanceValue>
               R$ 12300<FinanceValueRight>,00</FinanceValueRight>
             </FinanceValue>
+            <Withdraw>
+              <WithdrawText>Sacar</WithdrawText>
+            </Withdraw>
           </Finance>
           <Content>
-            <SeparatorTitle>Indicações</SeparatorTitle>
+            <SeparatorTitle>Últimas indicações</SeparatorTitle>
             {indicators.map((indicator, index) => (
               <Indications key={index} indicator={indicator} />
             ))}
           </Content>
+          <Logout>
+            <LogoutText>Sair</LogoutText>
+          </Logout>
         </ContentAnimation>
       </Container>
     )

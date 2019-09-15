@@ -7,8 +7,8 @@ import { colors } from '../styles'
 
 const AppNavigator = createBottomTabNavigator(
   {
-    Home: { screen: views.Home },
-    Profile: { screen: views.Profile }
+    Profile: { screen: views.Profile },
+    Home: { screen: views.Home }
     // Insert views here
   },
   {

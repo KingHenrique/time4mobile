@@ -3,14 +3,16 @@ import { colors } from '../../styles'
 import { getStatusBarHeight } from 'react-native-iphone-x-helper'
 import { View } from 'react-native-animatable'
 
-export const Container = styled.ScrollView`
+export const Container = styled.ScrollView.attrs({})`
   flex: 1;
 `
 export const ContentAnimation = styled(View).attrs({
   animation: 'fadeInUp'
-})``
+})`
+  justify-content: space-between;
+`
 export const Personal = styled.View`
-  margin-top: ${getStatusBarHeight() + 30}px;
+  margin-top: ${getStatusBarHeight() + 40}px;
   padding: 0 20px;
   flex-direction: row;
 `
@@ -26,7 +28,7 @@ export const PersonalInfo = styled.View`
 export const Message = styled.Text`
   font-family: avenir;
   font-size: 18px;
-  color: ${colors.gray};
+  color: ${colors.blue};
 `
 export const Name = styled.Text`
   font-family: avenir;
@@ -36,8 +38,11 @@ export const Name = styled.Text`
 `
 export const Finance = styled.View`
   height: 160px;
-  margin-top: 40px;
   align-items: center;
+  border-bottom-width: 1px;
+  border-color: ${colors.ice};
+  margin: 40px 20px;
+  margin-bottom: 20px;
 `
 export const FinanceDescription = styled.Text`
   font-family: avenir;
@@ -64,6 +69,33 @@ export const Content = styled.View`
 export const SeparatorTitle = styled.Text`
   font-family: avenir;
   font-weight: bold;
-  font-size: 28px;
+  font-size: 24px;
   color: ${colors.dark};
+`
+export const Logout = styled.TouchableOpacity`
+  height: 60px;
+  justify-content: center;
+  align-items: center;
+  margin: 0 60px;
+`
+export const LogoutText = styled.Text`
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  font-family: avenir;
+  color: ${colors.blue};
+`
+export const Withdraw = styled.TouchableOpacity`
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  margin: 0 60px;
+  margin-bottom: 30px;
+`
+export const WithdrawText = styled.Text`
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  font-family: avenir;
+  color: ${colors.blue};
 `

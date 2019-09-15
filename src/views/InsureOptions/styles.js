@@ -88,6 +88,7 @@ export const Button = styled.View`
 `
 export const ButtonText = styled.Text`
   font-size: 18px;
+  font-family: avenir;
   font-weight: bold;
   color: white;
   color: ${colors.ice};
