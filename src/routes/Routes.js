@@ -3,6 +3,7 @@ import * as views from '../views'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 import { createAppContainer } from 'react-navigation'
 import Icon from 'react-native-vector-icons/Ionicons'
+import { colors } from '../styles'
 
 const AppNavigator = createBottomTabNavigator(
   {
@@ -31,8 +32,8 @@ const AppNavigator = createBottomTabNavigator(
     resetOnBlur: true,
     tabBarOptions: {
       pressOpacity: 0.6,
-      activeTintColor: 'red',
-      inactiveTintColor: '#0D2763',
+      activeTintColor: colors.blue,
+      inactiveTintColor: colors.dark,
       style: {
         paddingTop: 10,
         height: 60
